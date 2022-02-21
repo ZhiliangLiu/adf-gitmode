@@ -1,0 +1,9 @@
+{
+	"name": "zoranliu-westeurope",
+	"location": "westeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "1ab91595-ee60-4fc7-9068-6544b09506e9",
+		"tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+	}
+}
