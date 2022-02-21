@@ -1,0 +1,105 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "zoranliu-westeurope"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
+		},
+		"AzureBlobStorage2_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage2'"
+		},
+		"Dynamics1_servicePrincipalCredential": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalCredential' of 'Dynamics1'"
+		},
+		"Quickbase1_userToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'userToken' of 'Quickbase1'"
+		},
+		"TeamDesk1_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'TeamDesk1'"
+		},
+		"Dynamics1_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "asdfasas"
+		},
+		"Quickbase1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://dongfangqishi.quickbase.com/db/br2zy3r9g"
+		},
+		"TeamDesk1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://www.teamdesk.net/secure/db/83398"
+		},
+		"TeamDesk1_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "liuzoran0064@gmail.com"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "zoranliu-westeurope_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureBlobStorage1_connectionString": {
+						"value": "[parameters('AzureBlobStorage1_connectionString')]"
+					},
+					"AzureBlobStorage2_connectionString": {
+						"value": "[parameters('AzureBlobStorage2_connectionString')]"
+					},
+					"Dynamics1_servicePrincipalCredential": {
+						"value": "[parameters('Dynamics1_servicePrincipalCredential')]"
+					},
+					"Quickbase1_userToken": {
+						"value": "[parameters('Quickbase1_userToken')]"
+					},
+					"TeamDesk1_password": {
+						"value": "[parameters('TeamDesk1_password')]"
+					},
+					"Dynamics1_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('Dynamics1_properties_typeProperties_servicePrincipalId')]"
+					},
+					"Quickbase1_properties_typeProperties_url": {
+						"value": "[parameters('Quickbase1_properties_typeProperties_url')]"
+					},
+					"TeamDesk1_properties_typeProperties_url": {
+						"value": "[parameters('TeamDesk1_properties_typeProperties_url')]"
+					},
+					"TeamDesk1_properties_typeProperties_userName": {
+						"value": "[parameters('TeamDesk1_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
