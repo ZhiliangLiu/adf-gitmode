@@ -22,21 +22,7 @@
 				}
 			],
 			"transformations": [],
-			"scriptLines": [
-				"source(allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     store: 'teamdesk',",
-				"     format: 'rest',",
-				"     table: 't_933707',",
-				"     view: 'v_7668056') ~> source1",
-				"source1 sink(allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     input(",
-				"          name as string",
-				"     ),",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1"
-			]
+			"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tstore: 'teamdesk',\n\tformat: 'rest',\n\ttable: 't_933707',\n\tview: 'v_7668056') ~> source1\nsource1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tname as string\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
 		}
 	}
 }
